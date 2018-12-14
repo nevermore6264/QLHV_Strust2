@@ -1,0 +1,41 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+	<field name="account.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Bạn phải nhập username</message>
+		</field-validator>
+	</field>
+	<field name="account.name">
+		<field-validator type="requiredstring">
+			<message>bắt buộc nhập tên!</message>
+		</field-validator>
+		
+	</field>
+	<field name="account.birthday">
+		<field-validator type="date">
+			<param name="min">1/1/1980</param>
+			<param name="max">1/1/2000</param>
+			<message>Ngày sinh phải nằm trong khoảng từ ${min} tới ${max}
+			</message>
+		</field-validator>
+	</field>
+	<field name="account.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Bạn phải điền mật khẩu</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="minLength">6</param>
+			<param name="maxLength">18</param>
+			<message>mật khẩu phải từ ${minLength} đến ${maxLength}</message>
+		</field-validator>
+			<field-validator type="fieldexpression">
+				<param name="expression"><![CDATA[account.password == cfmpassword]]></param>
+				<message>xác nhận mật khẩu phải trùng nhau!</message>
+			</field-validator>
+	</field>
+
+</validators>

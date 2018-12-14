@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD
+ Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.extension" value="html" />
+
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="login" class="com.poly.controller.LoginAction">
+			<result name="success">/login.jsp</result>
+		</action>
+
+		<action name="process-Login" class="com.poly.controller.LoginAction"
+			method="processLogin">
+			<result name="success" type="redirectAction">
+				<param name="actionName">dashboard</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="nhanvien" type="redirectAction">
+				<param name="actionName">drug_manager</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="logout" class="com.poly.controller.LoginAction" method="processlogout">
+			<result name="success" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="account_manager" class="com.poly.controller.AccountAction">
+			<result name="success">/account_manager.jsp</result>
+		</action>
+		<action name="acc_add" class="com.poly.controller.AccountAction" method="addNew">
+			<result name="success">/acc_add.jsp</result>
+		</action>
+		<action name="process-addnew" class="com.poly.controller.AccountAction"
+			method="processAddNew">
+			<result name="input">/acc_add.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">account_manager</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="delete" class="com.poly.controller.AccountAction" method="delete">
+			<result name="error">/account_manager.jsp</result>
+			<result name="success">/account_manager.jsp</result>
+		</action>
+		<action name="update" class="com.poly.controller.AccountAction" method="update">
+			<result name="success">/acc_update.jsp</result>
+		</action>
+		<action name="acc_update" class="com.poly.controller.AccountAction"
+			method="processUpdate">
+			<result name="error">/acc_update.jsp</result>
+			<result name="success">/account_manager.jsp</result>
+		</action>
+		<action name="Accountsearch" class="com.poly.controller.AccountAction"
+			method="processSearch">
+			<result name="success">/account_manager.jsp</result>
+		</action>
+		
+		<action name="searchmng" class="controller.DrugAction" method="searchD">
+			<result name="success">/drug_manager.jsp</result>
+			<result name="all">/drug_manager.jsp</result>
+		</action>
+		<action name="drug_manager" class="controller.DrugAction">
+			<result name="success">/drug_manager.jsp</result>
+		</action>
+
+		<action name="drug_insert" class="controller.DrugAction" method="drugadd">
+			<result name="success">/drug_insert.jsp</result>
+		</action>
+		
+		<action name="drugadd" class="controller.DrugAction" method="processdrugadd">
+			<result name="input">/drug_insert.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">drug_manager</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		<action name="drugupdate" class="controller.DrugAction" method="update">
+			<result name="success">/drug_update.jsp</result>
+		</action>
+		<action name="up" class="controller.DrugAction" method="processUpdate">
+			<result name="error">/drug_update.jsp</result>
+			<result name="success">/drug_manager.jsp</result>
+		</action>
+		<action name="dashboard" class="controller.DashboardAction">
+			<result name="success">/dashboard.jsp</result>
+		</action>
+		<action name="Datenow" class="controller.DashboardAction" method="listbyaccid">
+			<result name="success">/dashboard.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<action name="invoice_demo2" class="controller.InvoiceDetailsAction" method="showdemo2">
+			<result name="success">/invoice_demo2.jsp</result>
+		</action>
+		<action name="searchdemo2" class="controller.InvoiceDetailsAction" method="searchindemo2">
+			<result name="success">/invoice_demo2.jsp</result>
+			<result name="all">/invoice_demo2.jsp</result>
+		</action>
+		
+		
+		<action name="invoice_demo" class="controller.InvoiceAction"
+			method="processAddNew">
+			<result name="success" >/invoice_demo2.jsp</result>
+			<result name="error">/invoice_demo.jsp</result>
+		</action>
+		
+		<action name="invoice_demo3" class="controller.InvoiceDetailsAction"
+			method="listdemo3">
+			<result name="success">/invoice_demo3.jsp</result>
+		</action>
+		<action name="processAddhdct" class="controller.InvoiceAction"
+			method="processAddhdct">
+			<result name="success">/invoice_demo2.jsp</result>
+		</action>
+		<action name="test" class="com.poly.controller.AccountAction">
+			<result name="success">/account_manager.jsp</result>
+		</action>
+		<action name="invoice_add" class="controller.InvoiceDetailsAction">
+			<result name="success">/invoice_add.jsp</result>
+		</action>
+		<action name="invdetails" class="controller.InvoiceDetailsAction" method="addinvde">
+			<result name="success" type="redirectAction">
+				<param name="actionName">invoice_demo3</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/invoice_add.jsp</result>
+		</action>
+		
+		<action name="delete" class="controller.InvoiceDetailsAction" method="deldrug">
+			<result name="success" type="redirectAction">
+				<param name="actionName">invoice_demo3</param>
+				<param name="namespace">/</param>
+			</result>
+			<result name="input">/invoice_demo3.jsp</result>
+		</action>
+	</package>
+</struts>  
